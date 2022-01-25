@@ -11,6 +11,10 @@ html{
     scroll-behavior: smooth;
 }
 
+.letter_spacing_cls{
+    letter-spacing: 0.05rem;
+}
+
 ul li{
     list-style: none;
 }
@@ -217,6 +221,11 @@ section .title::after{
     background: none;
 }
 
+
+
+
+
+
 /* about section styling */
 .about .title::after{
     content: "who i am";
@@ -260,6 +269,17 @@ section .title::after{
     color: crimson;
     background: none;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 /* services section styling */
 .services, .teams{
@@ -449,7 +469,9 @@ section .title::after{
 }
 
 /* contact section styling */
-
+.contact .title::after{
+    content: "Know More About Me";
+}
 .contact .contact-content .column{
     width: calc(50% - 30px);
 }
