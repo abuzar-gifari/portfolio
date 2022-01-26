@@ -10,6 +10,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+<!--  jquery cdn link  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -63,7 +67,7 @@
                 <div class="column right">
                     <div class="text letter_spacing_cls" style="font-family: 'Source Sans Pro', sans-serif; font-weight:700;">I'm Gifari and I'm a <span class="typing-2"></span></div>
                     <p>Hi there, This is Gifari and I have been working on web design and web development for 1.5 years and I have accumulated all the great experiences while working in this sector. I am now a 4th year student of the Daffodil International University which is situated in the Dhaka,Bangladesh and 23 years old. Bangladesh is my motherland. I am currently studying software engineering and I have fallen in love with this subject. I have been working for a long time with great success on how to handle projects with clients, leadership skills, communication skills and a number of other skills. As the days go by, new technologies are being discovered and their demand and popularity are increasing, I actually prefer to work with those new technologies, but the web development profession is above all my preferences.</p>
-                    <a href="./cv/sk%20md%20abuzar%20gifari.docx" download="Sk-Md-Abuzar-Gifari.docx">Download Resume</a>
+                    <a href="./cv/CV%20of%20Sk%20Md%20Abuzar%20Gifari.docx" download="cv_of_Sk_Md_Abuzar_Gifari.docx">Download Resume</a>
                 </div>
             </div>
         </div>
@@ -202,24 +206,25 @@
                 </div>
                 <div class="column right">
                     <div class="text letter_spacing_cls"style="font-family: 'Source Sans Pro', sans-serif;font-weight:700;">Send Me Your Query</div>
-                    <form action="#">
+                    <form method="post" id="frmSubmit">
                         <div class="fields">
                             <div class="field name form-control">
-                                <input type="text" style="font-family: 'Source Sans Pro', sans-serif;" id="name" placeholder="Name" required>
+                                <input type="text" style="font-family: 'Source Sans Pro', sans-serif;" id="name" placeholder="Name" required name="name">
                             </div>
                             <div class="field email form-control">
-                                <input type="email" style="font-family: 'Source Sans Pro', sans-serif;"  id="email"  placeholder="Email" required>
+                                <input type="email" style="font-family: 'Source Sans Pro', sans-serif;"  id="email"  placeholder="Email" required name="email">
                             </div>
                         </div>
                         <div class="field form-control">
-                            <input type="text" style="font-family: 'Source Sans Pro', sans-serif;"  id="subject"  placeholder="Subject" required>
+                            <input type="text" style="font-family: 'Source Sans Pro', sans-serif;"  id="subject"  placeholder="Subject" required name="subject">
                         </div>
                         <div class="field textarea form-control">
-                            <textarea cols="30" rows="10" id="msg" style="font-family: 'Source Sans Pro', sans-serif;"   placeholder="Message.." required></textarea>
+                            <textarea cols="30" rows="10" id="message" style="font-family: 'Source Sans Pro', sans-serif;"   placeholder="Message.." required name="message"></textarea>
                         </div>
                         <div class="button-area">
-                            <button type="submit" style="font-family: 'Source Sans Pro', sans-serif; ">Send message</button>
+                            <button name="button" id="button" type="submit" style="font-family: 'Source Sans Pro', sans-serif; ">Send message</button>
                         </div>
+                        <div id="msgtxt"></div>
                     </form>
                 </div>
             </div>
@@ -245,5 +250,23 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        jQuery('#frmSubmit').on('submit',function(e){
+            e.preventDefault();
+            jQuery('#msgtxt').html('Please wait...');
+            jQuery('#button').attr('disabled',true);
+            jQuery.ajax({
+                url:'https://script.google.com/macros/s/AKfycbwlICvOp-phvqvSaaXu6BSI58Y078UeJDc2J61f6oCezeidAHjwTixEBrQH-WRcQXo5/exec',
+                type:'post',
+                data:jQuery('#frmSubmit').serialize(),
+                success:function(result){
+                    jQuery('#frmSubmit')[0].reset();
+                    jQuery('#msgtxt').html('Your Data Has Been Added Successfully');
+                    jQuery('#button').attr('disabled',false);
+                    //window.location.href='';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
